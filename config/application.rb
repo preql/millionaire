@@ -17,7 +17,7 @@ module Billionaire
 
     config.time_zone = 'Moscow'
 
-
+    config.assets.initialize_on_precompile = false
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
