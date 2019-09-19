@@ -97,11 +97,9 @@ RSpec.describe Game, type: :model do
       game_w_questions.current_level = Question::QUESTION_LEVELS.max
     end
 
-    let(:d) { 'd' }
-
     it 'if answer is correct' do
       game_w_questions.created_at = Time.now
-      expect(game_w_questions.answer_current_question!(d)).to be_truthy
+      expect(game_w_questions.answer_current_question!('d')).to be_truthy
       expect(game_w_questions.status).to eq(:won)
       expect(game_w_questions.finished?).to be_truthy
     end
@@ -115,14 +113,14 @@ RSpec.describe Game, type: :model do
 
     it 'when time is out' do
       game_w_questions.created_at = 35.minutes.ago
-      expect(game_w_questions.answer_current_question!(d)).to be_falsey
+      expect(game_w_questions.answer_current_question!('d')).to be_falsey
       expect(game_w_questions.status).to eq(:timeout)
       expect(game_w_questions.finished?).to be_truthy
     end
 
     it 'when question on million' do
       game_w_questions.created_at = Time.now
-      expect(game_w_questions.answer_current_question!(d)).to be_truthy
+      expect(game_w_questions.answer_current_question!('d')).to be_truthy
       expect(game_w_questions.status).to eq(:won)
       expect(game_w_questions.finished?).to be_truthy
     end
