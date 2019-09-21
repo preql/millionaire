@@ -139,7 +139,7 @@ RSpec.describe GamesController, type: :controller do
       expect(flash.empty?).to be_truthy # удачный ответ не заполняет flash
     end
 
-    it 'answers incorrect' do
+    it 'answer wrong' do
       put :answer, id: game_w_questions.id, letter: 'c'
       game = assigns(:game)
 
